@@ -5,8 +5,13 @@ import openpyxl
 from openpyxl import Workbook
 from openpyxl.styles import Font
 
-algebraWorksheet = Workbook()
-trigonometryWorksheet = Workbook()
-geometryWorksheet = Workbook()
-calculusWorksheet = Workbook()
-statisticsWorksheet = Workbook()
+
+myWorkbook = Workbook()
+myWorkbook.create_sheet("Algebra")
+myWorkbook.create_sheet("Trigonometry")
+myWorkbook.create_sheet("Geometry")
+myWorkbook.create_sheet("Calculus")
+myWorkbook.create_sheet("Statistics")
+
+myWorkbook.save(filename="formatted_grades.xlsx")
+myWorkbook.close()
