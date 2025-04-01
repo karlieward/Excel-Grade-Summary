@@ -1,5 +1,5 @@
 # Karlie Ward, Rachel Pinkney, Sabrina Wong, 
-# Spencer B, Mason, Gavin
+# Spencer Bigelow, Mason Zarges, Gavin Smith
 
 import openpyxl
 from openpyxl import Workbook
