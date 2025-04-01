@@ -69,5 +69,29 @@ for key in dictionaryClass:
         
         count += 1
 
+# Get cell range for headers
+cell_range = ['A1', 'B1', 'C1', 'D1']
+
+# Create a bold font to apply to headers
+bold_font = Font(bold=True)
+
+# Iterate through each worksheet accessing by index
+for i in range(5):
+    worksheet = myWorkbook.worksheets[i]
+    
+    for cell in cell_range:
+        header_cell = worksheet[cell]
+        header_cell.font = bold_font  # Apply bold font
+        
+        # Adjust olumn width from text length + 5 units
+        if header_cell.value:
+            column_letter = cell[0]
+            column_width = len(header_cell.value) + 5
+            worksheet.column_dimensions[column_letter].width = column_width
+
+# Delete default "Sheet"
+deleteSheet = myWorkbook["Sheet"]
+myWorkbook.remove(deleteSheet)
+
 myWorkbook.save(filename="formatted_grades.xlsx")
 myWorkbook.close()
