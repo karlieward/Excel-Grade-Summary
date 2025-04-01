@@ -115,7 +115,5 @@ for i in range(5):
 deleteSheet = myWorkbook["Sheet"]
 myWorkbook.remove(deleteSheet)
 
-    
-
 myWorkbook.save(filename="formatted_grades.xlsx")
 myWorkbook.close()
