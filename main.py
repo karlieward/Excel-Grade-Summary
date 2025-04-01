@@ -46,6 +46,11 @@ while True:
 
 # Set up the beginning columns for each new sheet
 myWorkbook = Workbook()
+
+# Delete default "Sheet"
+deleteSheet = myWorkbook["Sheet"]
+myWorkbook.remove(deleteSheet)
+
 wsAlg = myWorkbook.create_sheet("Algebra")
 wsAlg["A1"] = "Last Name"
 wsAlg["B1"] = "First Name"
@@ -76,7 +81,33 @@ wsStats["B1"] = "First Name"
 wsStats["C1"] = "Student ID"
 wsStats["D1"] = "Grade"
 
+cell_range = ['A1', 'B1', 'C1', 'D1']
 
+
+# Formatting
+# Create a Font object with the bold attribute set to True
+bold_font = Font(bold=True)
+
+# Iterate through the cells and apply the font
+for cell in cell_range:
+    wsAlg[cell].font = bold_font
+    wsTrig[cell].font = bold_font
+    wsStats[cell].font = bold_font
+    wsGeo[cell].font = bold_font
+    wsCalc[cell].font = bold_font
+
+
+# Get the text from cell A1 (reference cell)
+header_text = wsAlg['A1'].value
+
+# Check if the reference cell has text
+if header_text:
+    # Calculate width based on reference text length + 5 units
+    column_width = len(header_text) + 5
+    
+    # Apply the calculated width to columns A to D
+    for column in ['A', 'B', 'C', 'D']:
+        wsAlg.column_dimensions[column].width = column_width
 
 
 myWorkbook.save(filename="formatted_grades.xlsx")
