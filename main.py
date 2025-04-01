@@ -59,6 +59,8 @@ for key in dictionaryClass:
     newWS["B1"] = "First Name"
     newWS["C1"] = "Student ID"
     newWS["D1"] = "Grade"
+    newWS["F1"] = "Summary Statistics"
+    newWS["G1"] = "Value"
 
     count = 2
     for student in dictionaryClass[key]:
@@ -68,6 +70,26 @@ for key in dictionaryClass:
         newWS.cell(row=count, column=4).value = student.grade
         
         count += 1
+
+    newWS.auto_filter.ref = "A:D"
+
+    count -= 1
+
+    newWS["F2"] = "Highest Grade"
+    newWS["G2"] = f"=MAX(D2:D{count})"
+
+    newWS["F3"] = "Lowest Grade"
+    newWS["G3"] = f"=MIN(D2:D{count})"
+
+    newWS["F4"] = "Mean Grade"
+    newWS["G4"] = f"=AVERAGE(D2:D{count})"
+    
+    newWS["F5"] = "Median Grade"
+    newWS["G5"] = f"=MEDIAN(D2:D{count})"
+    
+    newWS["F6"] = "Number of Students"
+    newWS["G6"] = f"=COUNT(D2:D{count})"
+
 
 myWorkbook.save(filename="formatted_grades.xlsx")
 myWorkbook.close()
