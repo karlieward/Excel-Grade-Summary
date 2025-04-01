@@ -1,5 +1,13 @@
 # Karlie Ward, Rachel Pinkney, Sabrina Wong, 
 # Spencer Bigelow, Mason Zarges, Gavin Smith
+"""
+This script processes an Excel file containing unorganized student data. It:
+1. Extracts student names, IDs, and grades from the original sheet.
+2. Sorts students into separate sheets based on their class.
+3. Applies filters to columns A-D for easier sorting and searching.
+4. Adds summary statistics (highest, lowest, mean, and median grades, plus student count) in columns F and G.
+5. Saves the cleaned and organized data into a new Excel file: 'formatted_grades.xlsx'.
+"""
 
 import openpyxl
 from openpyxl import Workbook
